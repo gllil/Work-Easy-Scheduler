@@ -18,6 +18,7 @@ import Trade from "./pages/employee/Trade";
 function App() {
   return (
     <Router>
+      <div>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/adminhome" component={AdminHome} />
@@ -32,6 +33,7 @@ function App() {
         <Route path="/timeoff" component={TimeOff} />
         <Route path="/trade" component={Trade} />
       </Switch>
+      </div>
     </Router>
   );
 }
