@@ -1,16 +1,47 @@
-import React from "react";
-import { Button } from "react-bootstrap"
+import React, { useState } from "react";
+import HomeNav from "../../../components/HomeNav";
+import { Button, Container, Form } from "react-bootstrap";
 
-function AdminLogin(){
-    return(
-        <div>
-            <div className="container">
-                <div className="row"><input placeholder="email" type="email"></input></div>
-                <div className="row"><input placeholder="password" type="password"></input></div>
-                <div className="row"><Button>Submit</Button></div>
-            </div>
-        </div>
-    )
+function AdminLogin() {
+  const [ adminLogin, setAdminLogin ] = useState({});
+
+  function handleChange(e) {
+    const { controlId, value } = e.target;
+    setAdminLogin({ adminLogin, [controlId]: value })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  return (
+    <div>
+      <Container fluid>
+        <HomeNav />
+      </Container>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="adminEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              placeholder="email"
+              type="email"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="adminPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              placeholder="password"
+              type="password"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Container>
+    </div>
+  );
 }
 
 export default AdminLogin;

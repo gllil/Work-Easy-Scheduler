@@ -13,7 +13,7 @@ import EmployeeLogin from "./pages/employee/EmployeeLogin";
 import EmployeeRegister from "./pages/employee/EmployeeRegister";
 import TimeOff from "./pages/employee/TimeOff";
 import Trade from "./pages/employee/Trade";
-
+import Preemployment from "./pages/employee/Preemployment"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/adminhome" component={AdminHome} />
-        <Route path="/employee" component={Employees} />
+        <Route path="/employees" component={Employees} />
         <Route path="/hiring" component={Hiring} />
         <Route path="/adminlogin" component={AdminLogin} />
         <Route path="/adminregister" component={AdminRegister} />
@@ -32,6 +32,7 @@ function App() {
         <Route path="/employeeregister" component={EmployeeRegister} />
         <Route path="/timeoff" component={TimeOff} />
         <Route path="/trade" component={Trade} />
+        <Route path="/preemployment" component={Preemployment} />
       </Switch>
       </div>
     </Router>

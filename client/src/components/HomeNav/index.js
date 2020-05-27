@@ -1,11 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Container, Nav } from "react-bootstrap"
 
 function HomeNav() {
     return(
-        <div>
-            NavBar<div>Login</div><div>Register</div>
-        </div>
+        <Container fluid>
+        <Nav>
+            <Nav.Item>
+                <Nav.Link href="/adminlogin">Login</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="/adminregister">Register</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="/employeelogin">Employee Login</Nav.Link>
+            </Nav.Item>
+        </Nav>
+  </Container>
     )
 }
 
