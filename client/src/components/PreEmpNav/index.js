@@ -18,7 +18,7 @@ function PreEmpNav() {
               <Nav.Link href="/employeelogin">Login</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/employeeregister">Register</Nav.Link>
+              <Nav.Link href="/employeeregister">Apply</Nav.Link>
             </Nav.Item>
           </div>
         )}
