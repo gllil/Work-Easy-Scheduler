@@ -6,10 +6,10 @@ function HomeNav() {
         <Container fluid>
         <Nav>
             <Nav.Item>
-                <Nav.Link href="/adminlogin">Login</Nav.Link>
+                <Nav.Link href="/adminlogin">Employer Login</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="/adminregister">Register</Nav.Link>
+                <Nav.Link href="/adminregister">Employer Register</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link href="/employeelogin">Employee Login</Nav.Link>
