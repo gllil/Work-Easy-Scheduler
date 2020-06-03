@@ -12,7 +12,7 @@ function EmployeeNav() {
                     <Nav.Link href="/trade">Trade Schedule</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="/schedules">Request Time Off</Nav.Link>
+                    <Nav.Link href="/timeoff">Request Time Off</Nav.Link>
                 </Nav.Item>
             </Nav>
       </Container>

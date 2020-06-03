@@ -1,25 +1,24 @@
 import React from "react";
-import { ListGroup, Container, Row, Col } from "react-bootstrap"
+import { Table } from "react-bootstrap";
+import "./schedule.css";
 
-function Day(){
-    return(
-        <Container fluid>
-            <Row>
-                <Col>
-                <ul>
-                    <li>
-                    <h5>Date</h5>
-                    <ListGroup horizontal>
-                    <ListGroup.Item as={Col} sm="2">Shift</ListGroup.Item>
-                    <ListGroup.Item as={Col} sm="8">TimeStart-TimeEnd</ListGroup.Item>
-                    <ListGroup.Item as={Col} sm="2">Duration</ListGroup.Item>
-                    </ListGroup>
-                    </li>
-                </ul>
-                </Col>
-            </Row>
-        </Container>
-    )
+function Day() {
+  return (
+    <Table className="center">
+      <thead>
+        <tr>
+          <th colSpan="3">March 20, 2021</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shift</td>
+          <td>12:00 pm - 8:00 pm</td>
+          <td>Shift Duration 8:00</td>
+        </tr>
+      </tbody>
+    </Table>
+  );
 }
 
 export default Day;
