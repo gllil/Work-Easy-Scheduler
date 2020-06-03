@@ -9,10 +9,7 @@ function EmployeeRegister() {
   const [employerInfo, setEmployerInfo] = useState([]);
 
   function addMoreEmployers() {
-    setEmployerInfo([
-      ...employerInfo,
-      {},
-    ]);
+    setEmployerInfo([...employerInfo, {}]);
   }
 
   function removeEmployers(index) {
@@ -22,21 +19,23 @@ function EmployeeRegister() {
   }
 
   function handlePersonalInfoChange(event) {
-    const { controlId, value } = event.target;
+    const { dataset, value } = event.target;
 
-    setPersonalInfo({ ...personalInfo, [controlId]: value });
+    setPersonalInfo({ ...personalInfo, [dataset.property]: value });
   }
 
   function handleEmpHistoryChange(event, index) {
     const { dataset, value } = event.target;
-    console.log(dataset, value)
+    console.log(dataset, value);
     const form = [...employerInfo];
     form[index][dataset.property] = value;
     setEmployerInfo(form);
   }
 
   function handleSubmit(event) {
+    const {dataset} = event.target
     event.preventDefault();
+    dataset.property.value="";
   }
 
   return (
@@ -46,27 +45,27 @@ function EmployeeRegister() {
         <div className="text-center">
           <h3>Employment Application</h3>
         </div>
-        <Form onChange={handlePersonalInfoChange} onSubmit={handleSubmit}>
+        <Form onChange={handlePersonalInfoChange}>
           <h5>Personal Info</h5>
           <hr />
           <Form.Row>
             <Form.Group as={Col} md="5" controlId="first-name">
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="first-name" />
             </Form.Group>
             <Form.Group as={Col} md="2" controlId="middle-name">
               <Form.Label>M.I.</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="middle-name" />
             </Form.Group>
             <Form.Group as={Col} md="5" controlId="last-name">
               <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="last-name" />
             </Form.Group>
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="dob">
               <Form.Label>Date of Birth</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control type="date" data-property="dob" />
             </Form.Group>
             <Form.Group
               as={Col}
@@ -79,42 +78,46 @@ function EmployeeRegister() {
                 minLength={9}
                 placeholder="000-000-0000"
                 typeof="number"
+                data-property="social-security"
               />
             </Form.Group>
           </Form.Row>
           <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" />
+            <Form.Control type="email" data-property="email" />
           </Form.Group>
           <Form.Group controlId="street-address1">
             <Form.Label>Address 1</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" data-property="address1" />
           </Form.Group>
           <Form.Group controlId="street-address2">
             <Form.Label>Address 2 </Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" data-property="address2" />
           </Form.Group>
           <Form.Row>
-            <Form.Group as={Col} md="6" controlId="city">
+            <Form.Group as={Col} md="6">
               <Form.Label>City</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="city" />
             </Form.Group>
 
-            <Form.Group as={Col} md="3" controlId="state">
+            <Form.Group as={Col} md="3">
               <Form.Label>State</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="state" />
             </Form.Group>
 
-            <Form.Group as={Col} md="3" controlId="zip-code">
+            <Form.Group as={Col} md="3">
               <Form.Label>Zip Code</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control type="text" data-property="zip-code" />
             </Form.Group>
           </Form.Row>
+          <Form.Group as={Col} md="3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="text" data-property="zip-code" />
+            </Form.Group>
         </Form>
         <h5>Employment History</h5>
         <hr />
         {employerInfo.map((empInfo, i) => {
-
           return (
             <Form
               onChange={(e) => handleEmpHistoryChange(e, i)}
@@ -122,69 +125,76 @@ function EmployeeRegister() {
               key={i}
             >
               <strong>Employer {i + 1}</strong>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Employer Name</Form.Label>
-                <Form.Control  type="text" data-property={"employerName"} />
+                <Form.Control type="text" data-property={"employerName"} />
               </Form.Group>
               <Form.Row>
-                <Form.Group as={Col} >
+                <Form.Group as={Col}>
                   <Form.Label>Start Date</Form.Label>
-                  <Form.Control type="date" data-property={"startDate"}  />
+                  <Form.Control type="date" data-property={"startDate"} />
                 </Form.Group>
-                <Form.Group as={Col} >
+                <Form.Group as={Col}>
                   <Form.Label>End Date</Form.Label>
-                  <Form.Control type="date" data-property={"endDate"}  />
-                  <Form.Check
-                    type="checkbox"
-                    label="Currently Working Here"
-                  />
+                  <Form.Control type="date" data-property={"endDate"} />
+                  <Form.Check type="checkbox" label="Currently Working Here" />
                 </Form.Group>
               </Form.Row>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Job Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  data-property={"jobDescription"} 
-                />
+                <Form.Control as="textarea" data-property={"jobDescription"} />
               </Form.Group>
               <Form.Row>
-                <Form.Group as={Col} >
+                <Form.Group as={Col}>
                   <Form.Label>Manager/Supervisor Name</Form.Label>
-                  <Form.Control type="text" data-property={"mgrName"}  />
+                  <Form.Control type="text" data-property={"mgrName"} />
                 </Form.Group>
-                <Form.Group as={Col} >
+                <Form.Group as={Col}>
                   <Form.Label>Manager/Supervisor Phone Number</Form.Label>
-                  <Form.Control type="text" data-property={"mgrPhone"}  />
+                  <Form.Control type="text" data-property={"mgrPhone"} />
                 </Form.Group>
               </Form.Row>
-              <Form.Group >
+              <Form.Group>
                 <Form.Label>Reason for Leaving</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  data-property={"leaveReason"} 
-                />
+                <Form.Control as="textarea" data-property={"leaveReason"} />
               </Form.Group>
             </Form>
           );
         })}
-        <Row>
-          <Button
-            as={Col}
-            md={{ span: 3, offset: 1 }}
-            onClick={addMoreEmployers}
-          >
-            Add Employer
-          </Button>
-          <Button
-            as={Col}
-            md={{ span: 3, offset: 4 }}
-            onClick={removeEmployers}
-          >
-            Remove Employer
-          </Button>
-        </Row>
+
+        {employerInfo.length < 1 ? (
+          <Row>
+            <Button
+              as={Col}
+              md={{ span: 4, offset: 4 }}
+              onClick={addMoreEmployers}
+            >
+              Add Employer
+            </Button>
+          </Row>
+        ) : (
+          <Row>
+            <Button
+              as={Col}
+              md={{ span: 3, offset: 1 }}
+              onClick={addMoreEmployers}
+            >
+              Add Employer
+            </Button>
+            <Button
+              as={Col}
+              md={{ span: 3, offset: 4 }}
+              onClick={removeEmployers}
+            >
+              Remove Employer
+            </Button>
+          </Row>
+        )}
+
         <hr />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onSubmit={handleSubmit}>
+          Submit
+        </Button>
       </Container>
     </div>
   );
