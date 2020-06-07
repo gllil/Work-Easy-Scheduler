@@ -29,60 +29,62 @@ function Schedules() {
           </Col>
         </Row>
 
-        <Modal show={show} className="justify-content-center" onHide={handleClose}>
+        <Modal
+          show={show}
+          className="justify-content-center"
+          onHide={handleClose}
+        >
           <Modal.Header closeButton>
             <Modal.Title>New Schedule</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
               <Row>
-                  <Form.Group>
-                    <Form.Label>Select Employee</Form.Label>
-                    <Form.Control as="select" multiple>
-                      {Profiles.map((res) => {
-                        const name = `${res.name.first} ${res.name.last}`;
-                        return <option>{name}</option>;
-                      })}
-                    </Form.Control>
-                  </Form.Group>
-                </Row>
-                  <Row>
-                      <h6>Select Days Working</h6> 
-                      </Row>
-                      <Row>
-                      <Form.Group id="sunday">
-                        <Form.Check inline type="checkbox" label="Sunday" />
-                      </Form.Group>
-                      <Form.Group id="monday">
-                        <Form.Check inline type="checkbox" label="Monday" />
-                      </Form.Group>
-                      <Form.Group id="tuesday">
-                        <Form.Check inline type="checkbox" label="Tuesday" />
-                      </Form.Group>
-                      <Form.Group id="wednesday">
-                        <Form.Check inline type="checkbox" label="Wednesday" />
-                      </Form.Group>
-                      <Form.Group id="thursday">
-                        <Form.Check inline type="checkbox" label="Thursday" />
-                      </Form.Group>
-                      <Form.Group id="friday">
-                        <Form.Check inline type="checkbox" label="Friday" />
-                      </Form.Group>
-                      <Form.Group id="saturday">
-                        <Form.Check inline type="checkbox" label="Saturday" />
-                      </Form.Group>
-                      </Row>
-                    <Row>
-                      <Form.Group>
-                        <Form.Label>Start Time</Form.Label>
-                        <Form.Control type="time" />
-                      </Form.Group>
-                      <Form.Group>
-                        <Form.Label>End Time</Form.Label>
-                        <Form.Control type="time" />
-                      </Form.Group>
-                    
-               
+                <Form.Group>
+                  <Form.Label>Select Employee</Form.Label>
+                  <Form.Control as="select" multiple>
+                    {Profiles.map((res) => {
+                      const name = `${res.name.first} ${res.name.last}`;
+                      return <option>{name}</option>;
+                    })}
+                  </Form.Control>
+                </Form.Group>
+              </Row>
+              <Row>
+                <h6>Select Days Working</h6>
+              </Row>
+              <Row>
+                <Form.Group id="sunday">
+                  <Form.Check inline type="checkbox" label="Sunday" />
+                </Form.Group>
+                <Form.Group id="monday">
+                  <Form.Check inline type="checkbox" label="Monday" />
+                </Form.Group>
+                <Form.Group id="tuesday">
+                  <Form.Check inline type="checkbox" label="Tuesday" />
+                </Form.Group>
+                <Form.Group id="wednesday">
+                  <Form.Check inline type="checkbox" label="Wednesday" />
+                </Form.Group>
+                <Form.Group id="thursday">
+                  <Form.Check inline type="checkbox" label="Thursday" />
+                </Form.Group>
+                <Form.Group id="friday">
+                  <Form.Check inline type="checkbox" label="Friday" />
+                </Form.Group>
+                <Form.Group id="saturday">
+                  <Form.Check inline type="checkbox" label="Saturday" />
+                </Form.Group>
+              </Row>
+              <Row>
+                <Form.Group>
+                  <Form.Label>Start Time</Form.Label>
+                  <Form.Control type="time" />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>End Time</Form.Label>
+                  <Form.Control type="time" />
+                </Form.Group>
               </Row>
             </Form>
           </Modal.Body>
@@ -114,10 +116,9 @@ function Schedules() {
             </Button>
           </Col>
         </Row>
-        <Table responsive>
+        <Table responsive className="text-center">
           <thead>
             <tr>
-              <th>Employee</th>
               <th>Sunday</th>
               <th>Monday</th>
               <th>Tuesday</th>
@@ -129,7 +130,9 @@ function Schedules() {
           </thead>
           <tbody>
             <tr>
-              <td></td>
+              <td colSpan="7"></td>
+            </tr>
+            <tr>
               <td></td>
               <td></td>
               <td></td>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import HomeNav from "../../../components/HomeNav";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Row, Col } from "react-bootstrap";
 
 function AdminLogin() {
-  const [ adminLogin, setAdminLogin ] = useState({});
+  const [adminLogin, setAdminLogin] = useState({});
 
   function handleChange(e) {
     const { controlId, value } = e.target;
-    setAdminLogin({ adminLogin, [controlId]: value })
+    setAdminLogin({ adminLogin, [controlId]: value });
   }
 
   function handleSubmit(e) {
@@ -20,6 +20,11 @@ function AdminLogin() {
         <HomeNav />
       </Container>
       <Container>
+        <Row>
+          <Col className="text-center">
+            <h3>Admin Login</h3>
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="adminEmail">
             <Form.Label>Email</Form.Label>

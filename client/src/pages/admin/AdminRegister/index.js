@@ -20,6 +20,11 @@ function AdminRegister() {
         <HomeNav />
       </Container>
       <Container>
+      <Row>
+          <Col className="text-center">
+            <h3>Admin Registration</h3>
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="company">
             <Form.Label>Business/Organization Name</Form.Label>
