@@ -8,6 +8,7 @@ function EmployeeRegister() {
 
   const [employerInfo, setEmployerInfo] = useState([]);
 
+
   function addMoreEmployers() {
     setEmployerInfo([...employerInfo, {}]);
   }
@@ -69,7 +70,7 @@ function EmployeeRegister() {
             </Form.Group>
             <Form.Group
               as={Col}
-              md={{ span: 4, offset: 2 }}
+              md="4"
               controlId="social-security"
             >
               <Form.Label>Social Security</Form.Label>
@@ -110,10 +111,12 @@ function EmployeeRegister() {
               <Form.Control type="text" data-property="zip-code" />
             </Form.Group>
           </Form.Row>
-          <Form.Group as={Col} md="3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="text" data-property="zip-code" />
+          <Form.Row>
+          <Form.Group as={Col} md="4">
+              <Form.Label>Create Password</Form.Label>
+              <Form.Control type="password" data-property="password" />
             </Form.Group>
+            </Form.Row>
         </Form>
         <h5>Employment History</h5>
         <hr />

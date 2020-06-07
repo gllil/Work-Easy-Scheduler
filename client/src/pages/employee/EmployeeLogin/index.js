@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Col, Row } from "react-bootstrap";
 import PreEmpNav from "../../../components/PreEmpNav";
 
 function EmployeeLogin() {
@@ -20,6 +20,11 @@ function EmployeeLogin() {
         <PreEmpNav />
       </Container>
       <Container>
+        <Row>
+          <Col className="text-center">
+            <h3>Employee Login</h3>
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="adminEmail">
             <Form.Label>Email</Form.Label>
