@@ -1,0 +1,17 @@
+GET http://localhost:3000/admin
+
+###
+GET http://localhost:3000/employee
+
+###
+
+POST http://localhost:3000/admin
+Content-Type: application/json
+
+{
+    "name":"Mike",
+    "adminRegister1": "string", 
+    "adminDate": 1591233223453
+}
+
+

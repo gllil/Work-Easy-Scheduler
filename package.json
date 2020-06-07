@@ -35,7 +35,8 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
   },
   "bugs": {
     "url": "https://github.com/gllil/Final-Project/issues"
