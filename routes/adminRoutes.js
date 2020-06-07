@@ -3,7 +3,7 @@ const router = express.Router()
 const  Admin = require('../models/adminSchema')
 
 
-// Getting all
+//Bringing all admin info 
 router.get('/', async (req,res) => {
 try {
     const admin = await Admin.find()
@@ -19,7 +19,7 @@ router.get('/:id',(req,res)=>{
 res.send(req.params.id)
 })
 
-// Creating one
+// Creating a new admin 
 router.post('/', (req,res)=>{
     const body= req.body
     Admin.create(body).then(model=> res.json(model))

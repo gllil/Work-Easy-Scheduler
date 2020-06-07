@@ -1,11 +1,11 @@
 GET http://localhost:3000/admin
 
 ###
-GET http://localhost:3000/employee
+GET http://localhost:3000/
 
 ###
 
-POST http://localhost:3000/admin
+POST http://localhost:3000/schedulesUpdate/
 Content-Type: application/json
 
 {
@@ -13,5 +13,5 @@ Content-Type: application/json
     "adminRegister1": "string", 
     "adminDate": 1591233223453
 }
-
+ 
 

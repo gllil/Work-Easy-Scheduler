@@ -20,6 +20,11 @@ function AdminRegister() {
         <HomeNav />
       </Container>
       <Container>
+      <Row>
+          <Col className="text-center">
+            <h3>Admin Registration</h3>
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="company">
             <Form.Label>Business/Organization Name</Form.Label>
@@ -91,7 +96,7 @@ function AdminRegister() {
               <Form.Control type="text" onChange={handleChange} />
             </Form.Group>
           </Row>
-          <Form.Group controlId="admin-password">
+          <Form.Group  controlId="admin-password">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" onChange={handleChange} />
           </Form.Group>

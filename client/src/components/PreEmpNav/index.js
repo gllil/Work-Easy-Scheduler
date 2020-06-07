@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 function PreEmpNav() {
@@ -7,22 +7,26 @@ function PreEmpNav() {
 
   return (
     <Container fluid>
-      <Nav>
+      <Navbar collapseOnSelect bg="light" variant="light" expand="md">
+        <Navbar.Brand href="/">Work Easy</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+      
         {location.pathname === "/preemployment" ? (
-          <Nav.Item>
+          <Nav>
             <Nav.Link href="/employeelogin">Logout</Nav.Link>
-          </Nav.Item>
+          </Nav>
         ) : (
-          <div>
-            <Nav.Item>
+          <Nav>
+            
               <Nav.Link href="/employeelogin">Login</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/employeeregister">Register</Nav.Link>
-            </Nav.Item>
-          </div>
+
+              <Nav.Link href="/employeeregister">Apply</Nav.Link>
+
+          </Nav>
         )}
-      </Nav>
+      </Navbar.Collapse>
+      </Navbar>
     </Container>
   );
 }
