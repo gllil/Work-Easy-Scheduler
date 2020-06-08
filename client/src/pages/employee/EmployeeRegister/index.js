@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PreEmpNav from "../../../components/PreEmpNav";
 // import EmployerHistory from "../../../components/EmployerHistory"
 import { Container, Form, Col, Button, Row } from "react-bootstrap";
+import API from "../../../utils/API"
 
 function EmployeeRegister() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -34,9 +35,8 @@ function EmployeeRegister() {
   }
 
   function handleSubmit(event) {
-    const {dataset} = event.target
     event.preventDefault();
-    dataset.property.value="";
+    
   }
 
   return (
