@@ -15,4 +15,18 @@ router.get('/', async (req,res) => {
         
     }
     })
+        // delete emplyee 
+    router.delete('/:id', async (req,res) => {
+        try {
+            const employee = await Employee.findByIdAndDelete(req.params.id)
+        res.json({meeasge:"employee deleted"})
+      //res.send('Hello') 
+      console.log(employee)
+        } catch (err) {
+            res.status(500).json({message: err.message})
+            
+        }
+        })
+
+
     module.exports = router

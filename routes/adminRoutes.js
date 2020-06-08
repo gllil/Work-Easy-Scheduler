@@ -14,9 +14,16 @@ try {
 }
 })
 
-// Getting one
-router.get('/:id',(req,res)=>{
-res.send(req.params.id)
+// Getting one admin
+router.get('/:id',async(req,res)=>{
+    try {
+        const admin = await Admin.findById(req.params.id)
+        res.json(admin)
+    } catch (err) {
+        res.status(500).json({message: err.message})
+        
+    }
+//res.send(req.params.id)
 })
 
 // Creating a new admin 

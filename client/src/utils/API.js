@@ -2,19 +2,19 @@ import axios from "axios";
 
 export default {
     getEmployees: () => {
-        return axios.get("/api/employees")
+        return axios.get("/api/employees/")
     },
 
     getAdmin: (id) => {
-        return axios.get("/api/admin" + id)
+        return axios.get("/api/admin/" + id)
     },
 
     updateEmployee: (id) => {
-        return axios.update("/api/employees" + id)
+        return axios.update("/api/employees/" + id)
     },
 
     deleteEmployee: (id) => {
-        return axios.delete("/api/employees" + id)
+        return axios.delete("/api/employees/" + id)
     },
 
     getSchedules: () => {
@@ -26,7 +26,7 @@ export default {
     },
 
     deleteSchedule: (id) => {
-        return axios.delete("/api/schedules" + id)
+        return axios.delete("/api/schedules/" + id)
     },
     
 }

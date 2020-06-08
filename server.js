@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
-const admin = require('./routes/adminRoutes');
+//const admin = require('./routes/adminRoutes');
 //const users = require('./routes/api/users');
 
 const app = express();
@@ -25,7 +25,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 // app.use(passport.initialize());
 // require('./config/passport')(passport);
 
-app.use('/admin',admin);
+//app.use('/admin',admin);
 app.use(express.json())
 app.use (routes)
 
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-app.listen(3000,() => console.log('Server Started'))
-//app.listen(port, () => {
-   // console.log(`Server is listening at http://localhost:${port}`);
-//});
+//app.listen(3000,() => console.log('Server Started'))
+app.listen(port, () => {
+    console.log(`Server is listening at http://localhost:${port}`);
+});
