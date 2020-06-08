@@ -5,7 +5,11 @@ nameofCompany: {
     type: String,
     required: true
 },
-nameofAdmin: {
+firstname: {
+    type:String,
+    required:true
+},
+lastname: {
     type:String,
     required:true
 },
@@ -16,15 +20,26 @@ email: {
     match:[/.+@.+\..+/,"Please enter a valid email"]
 },
 phone: {
-    type:Number,
+    type:String,
     required: true,
 },
-password:{
-    type:String,
-    required:true,
-    
+address1:{
+        type:String,
+        required:true,
 },
-address:{
+address2:{
+        type:String,
+        required:false,
+},
+city:{
+        type:String,
+        required:true,
+},
+state:{
+        type:String,
+        required:true,
+},
+zipCode:{
         type:String,
         required:true,
 },

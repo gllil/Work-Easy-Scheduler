@@ -2,7 +2,15 @@ const mongoose = require('mongoose')
 
 
 const employeeSchema = new mongoose.Schema({
-name: {
+firstname: {
+    type: String,
+    required: true
+},
+middleinitial: {
+    type: String,
+    required: false
+},
+lastname: {
     type: String,
     required: true
 },
@@ -23,14 +31,25 @@ email:{
     required:true,
     match:[/.+@.+\..+/,"Please enter a valid email"]
 },
-address:{
-    type:String,
-    required:true
-},
-password:{
+address1:{
     type:String,
     required:true,
-    
+},
+address2:{
+    type:String,
+    required:false,
+},
+city:{
+    type:String,
+    required:true,
+},
+state:{
+    type:String,
+    required:true,
+},
+zipCode:{
+    type:Number,
+    required:true,
 },
 employeeStatus:{
 type:String,
