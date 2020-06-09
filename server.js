@@ -8,13 +8,14 @@ const passport = require('passport');
 const path = require('path');
 
 //const admin = require('./routes/adminRoutes');
-//const users = require('./routes/api/users');
+const users = require('./routes/api/user');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/api/users', users);
 
 const db = process.env.MONGODB_URI || require("./config/keys").mongoURI
 mongoose.connect(db, { useNewUrlParser: true })
@@ -22,8 +23,8 @@ mongoose.connect(db, { useNewUrlParser: true })
 .catch((err) => console.log(err));
 
 
-// app.use(passport.initialize());
-// require('./config/passport')(passport);
+ app.use(passport.initialize());
+require('./config/passport')(passport);
 
 //app.use('/admin',admin);
 app.use(express.json())
