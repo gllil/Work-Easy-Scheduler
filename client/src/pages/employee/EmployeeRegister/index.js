@@ -50,17 +50,17 @@ function EmployeeRegister() {
           <h5>Personal Info</h5>
           <hr />
           <Form.Row>
-            <Form.Group as={Col} md="5" controlId="first-name">
+            <Form.Group as={Col} md="5" controlId="firstname">
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" data-property="first-name" />
+              <Form.Control type="text" data-property="firstname" />
             </Form.Group>
             <Form.Group as={Col} md="2" controlId="middle-name">
               <Form.Label>M.I.</Form.Label>
-              <Form.Control type="text" data-property="middle-name" />
+              <Form.Control type="text" data-property="middlename" />
             </Form.Group>
             <Form.Group as={Col} md="5" controlId="last-name">
               <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" data-property="last-name" />
+              <Form.Control type="text" data-property="lastname" />
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -78,8 +78,8 @@ function EmployeeRegister() {
                 maxLength={9}
                 minLength={9}
                 placeholder="000-000-0000"
-                typeof="number"
-                data-property="social-security"
+                type="password"
+                data-property="socialsecurity"
               />
             </Form.Group>
           </Form.Row>
@@ -108,7 +108,7 @@ function EmployeeRegister() {
 
             <Form.Group as={Col} md="3">
               <Form.Label>Zip Code</Form.Label>
-              <Form.Control type="text" data-property="zip-code" />
+              <Form.Control type="text" data-property="zipcode" />
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -130,36 +130,36 @@ function EmployeeRegister() {
               <strong>Employer {i + 1}</strong>
               <Form.Group>
                 <Form.Label>Employer Name</Form.Label>
-                <Form.Control type="text" data-property={"employerName"} />
+                <Form.Control type="text" data-property="employerName" />
               </Form.Group>
               <Form.Row>
                 <Form.Group as={Col}>
                   <Form.Label>Start Date</Form.Label>
-                  <Form.Control type="date" data-property={"startDate"} />
+                  <Form.Control type="date" data-property="startDate" />
                 </Form.Group>
                 <Form.Group as={Col}>
                   <Form.Label>End Date</Form.Label>
-                  <Form.Control type="date" data-property={"endDate"} />
-                  <Form.Check type="checkbox" label="Currently Working Here" />
+                  <Form.Control type="date" data-property="endDate" />
+                  <Form.Check type="checkbox" label="Currently Working Here" data-property="employed" />
                 </Form.Group>
               </Form.Row>
               <Form.Group>
                 <Form.Label>Job Description</Form.Label>
-                <Form.Control as="textarea" data-property={"jobDescription"} />
+                <Form.Control as="textarea" data-property="jobDescription" />
               </Form.Group>
               <Form.Row>
                 <Form.Group as={Col}>
                   <Form.Label>Manager/Supervisor Name</Form.Label>
-                  <Form.Control type="text" data-property={"mgrName"} />
+                  <Form.Control type="text" data-property="mgrName" />
                 </Form.Group>
                 <Form.Group as={Col}>
                   <Form.Label>Manager/Supervisor Phone Number</Form.Label>
-                  <Form.Control type="text" data-property={"mgrPhone"} />
+                  <Form.Control type="text" data-property="mgrPhone" />
                 </Form.Group>
               </Form.Row>
               <Form.Group>
                 <Form.Label>Reason for Leaving</Form.Label>
-                <Form.Control as="textarea" data-property={"leaveReason"} />
+                <Form.Control as="textarea" data-property="leaveReason" />
               </Form.Group>
             </Form>
           );
