@@ -28,5 +28,13 @@ export default {
     deleteSchedule: (id) => {
         return axios.delete("/api/schedules/" + id)
     },
+
+    addEmployee: (employeeInfo) => {
+        return axios.post("/api/employees", employeeInfo)
+    },
+
+    addAdmin: (adminInfo) => {
+        return axios.post("/api/admin", adminInfo)
+    }
     
 }

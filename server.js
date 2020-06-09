@@ -36,7 +36,10 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
+
 //app.listen(3000,() => console.log('Server Started'))
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
+  console.log(`Server is listening at http://localhost:${port}`);
+
 });
