@@ -55,14 +55,44 @@ employeeStatus:{
 type:String,
 required:true
 },
-resume: {
+resume: [
+     {
     employer:{
-        jodDescription:{
-            type: String,
-            required:true
-        }
+        type: String,
+        required: true
+    },
+    jodDescription:{
+        type: String,
+        required:true
+    },
+    startDate:{
+        type: Date,
+        required: true
+    },
+    endDate:{
+        type: Date,
+        required: false
+    },
+    managerName:{
+        type: String,
+        required: false
+    },
+    managerPhone:{
+        type: String,
+        required: false
+    },
+    leavingReason:{
+        type: String,
+        required: false
+    },
+    currentlyEmployed:{
+        type: Boolean,
+        default: false,
+        required: false
     }
-},
+
+    
+}],
 adminDate: {
     type: Date,
     required:true,
