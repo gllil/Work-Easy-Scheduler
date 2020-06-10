@@ -61,7 +61,7 @@ resume: [
         type: String,
         required: true
     },
-    jodDescription:{
+    jobDescription:{
         type: String,
         required:true
     },
@@ -81,7 +81,7 @@ resume: [
         type: String,
         required: false
     },
-    leavingReason:{
+    leaveReason:{
         type: String,
         required: false
     },

@@ -9,6 +9,10 @@ export default {
         return axios.get("/api/admin/" + id)
     },
 
+    getCompanies: () => {
+        return axios.get("/api/company")
+    },
+
     updateEmployee: (id) => {
         return axios.update("/api/employees/" + id)
     },
@@ -35,6 +39,10 @@ export default {
 
     addAdmin: (adminInfo) => {
         return axios.post("/api/admin", adminInfo)
+    },
+
+    addCompany: (companyName) => {
+        return axios.post("/api/admin", companyName)
     }
     
 }
