@@ -1,7 +1,6 @@
 import React from "react";
 import HomeNav from "../components/HomeNav";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./Home.css"
 
 function Home() {
@@ -22,19 +21,15 @@ function Home() {
         </Row>
         <Row>
           <Col className="text-center">
-            <Button className="homeBtn">
-              <Link to="/adminregister" className="text-white">
+            <Button href="/adminregister" className="homeBtn text-white">
                 Get Started
-              </Link>
             </Button>
           </Col>
         </Row>
         <Row>
           <Col className="text-center">
-            <Button className="homeBtn">
-              <Link to="/adminlogin" className="text-white">
+            <Button href="/adminlogin"className="homeBtn text-white">
                 Login
-              </Link>
             </Button>
           </Col>
         </Row>

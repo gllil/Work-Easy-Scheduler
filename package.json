@@ -31,7 +31,10 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react-bootstrap": "^1.0.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "validator": "^11.1.0"
   },
   "devDependencies": {

@@ -14,17 +14,17 @@ router.post('/register', (req, res) => {
 
     if(!isValid) return res.status(400).json(errors);
 
-    const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
+    const accessType = req.body.accessType;
 
     User.findOne({ email }).then(user => {
         if(user) return res.status(400).json({ email: "Email already exists" });
 
         const newUser = new User({
-            name,
             email,
-            password
+            password,
+            accessType
         });
 
         bcrypt.genSalt(10, (err, salt) => {

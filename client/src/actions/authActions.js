@@ -24,7 +24,7 @@ export const setErrors = err => {
 };
 
 export const registerUser = (userData, history) => dispatch => {
-    axios.post('/api/users/register', userData).then(res => history.push("/login")).catch(err => dispatch(setErrors(err)));
+    axios.post('/api/users/register', userData).then(res => history.push("/")).catch(err => dispatch(setErrors(err)));
 };
 
 export const loginUser = userData => dispatch => {
