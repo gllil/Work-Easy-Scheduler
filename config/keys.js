@@ -1,4 +1,4 @@
 module.exports = {
-    mongoURI:"mongodb://localhost:27017/Easyway",
-    cypher:"blayblay"
+  mongoURI: "mongodb://localhost:27017/Workeasy",
+  cypher: "blayblay",
 };

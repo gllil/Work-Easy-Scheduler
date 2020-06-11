@@ -76,11 +76,11 @@ const employeeSchema = new mongoose.Schema({
         type: Date,
         required: false,
       },
-      managerName: {
+      mgrName: {
         type: String,
         required: false,
       },
-      managerPhone: {
+      mgrPhone: {
         type: String,
         required: false,
       },
