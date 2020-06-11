@@ -6,17 +6,18 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
-// import API from "../../../utils/API"
+import API from "../../../utils/API";
 
 class EmployeeRegister extends Component {
   constructor() {
     super();
     this.state = {
+      employerName: "Company",
       firstname: "",
       middlename: "",
       lastname: "",
       dob: "",
-      socialsecurity: "",
+      ssn: "",
       email: "",
       address1: "",
       address2: "",
@@ -26,9 +27,21 @@ class EmployeeRegister extends Component {
       password: "",
       password2: "",
       accessType: "employee",
-      employers: [],
+      employers: [
+        {
+          employer: "",
+          jobDescription: "",
+          startDate: "",
+          endDate: "",
+          mgrName: "",
+          mgrPhone: "",
+          leaveReason: "",
+          currentlyEmployed: false,
+        },
+      ],
       employeeStatus: "recruit",
       errors: {},
+      accessType: "employee",
     };
   }
 
@@ -50,7 +63,19 @@ class EmployeeRegister extends Component {
 
   addMoreEmployers = () => {
     this.setState({
-      employers: [...this.state.employers, {}],
+      employers: [
+        ...this.state.employers,
+        {
+          employer: "",
+          jobDescription: "",
+          startDate: "",
+          endDate: "",
+          mgrName: "",
+          mgrPhone: "",
+          leaveReason: "",
+          currentlyEmployed: false,
+        },
+      ],
     });
   };
 
@@ -68,17 +93,55 @@ class EmployeeRegister extends Component {
     const { dataset, value } = event.target;
     console.log(dataset, value);
     const updatedEmployers = this.state.employers.map((employer, i) => {
-      if(i !== index) return employer
+      if (i !== index) return employer;
       return {
-        ...employer, 
-        [dataset.property]: value
-      }
-    })
-    this.setState({employers: updatedEmployers})
+        ...employer,
+        [dataset.property]: value,
+      };
+    });
+    this.setState({ employers: updatedEmployers });
   };
+
+  // handldeCheckbox() {
+  //   this.state.currentlyEmployed === false
+  //     ? this.setState({ currentlyEmployed: true })
+  //     : this.setState({ currentlyEmployed: false });
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2,
+      accessType: this.state.accessType,
+    };
+
+    const applicationInfo = {
+      employerName: this.state.employerName,
+      firstname: this.state.firstname,
+      middleinitial: this.state.middlename,
+      lastname: this.state.lastname,
+      dob: this.state.dob,
+      ssn: this.state.ssn,
+      phone: this.state.phone,
+      email: this.state.email,
+      address1: this.state.address1,
+      address2: this.state.address2,
+      city: this.state.city,
+      state: this.state.state,
+      zipCode: this.state.zipcode,
+      employeeStatus: this.state.employeeStatus,
+      employers: this.state.employers,
+    };
+
+    console.log(newUser);
+    console.log(applicationInfo);
+
+    API.addEmployee(applicationInfo)
+      .then(() => this.props.registerUser(newUser, this.props.history))
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -129,7 +192,15 @@ class EmployeeRegister extends Component {
                   minLength={9}
                   placeholder="000-000-0000"
                   type="password"
-                  data-property="socialsecurity"
+                  data-property="ssn"
+                />
+              </Form.Group>
+              <Form.Group as={Col} md="4" controlId="phone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="text"
+                  data-property="phone"
+                  placeholder="(555) 555-5555"
                 />
               </Form.Group>
             </Form.Row>
@@ -162,9 +233,13 @@ class EmployeeRegister extends Component {
               </Form.Group>
             </Form.Row>
             <Form.Row>
-              <Form.Group as={Col} md="4">
+              <Form.Group as={Col}>
                 <Form.Label>Create Password</Form.Label>
                 <Form.Control type="password" data-property="password" />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control type="password" data-property="password2" />
               </Form.Group>
             </Form.Row>
           </Form>
@@ -172,15 +247,11 @@ class EmployeeRegister extends Component {
           <hr />
           {this.state.employers.map((empInfo, i) => {
             return (
-              <Form
-                onChange={(e) => this.handleEmpHistoryChange(e, i)}
-                onSubmit={this.handleSubmit}
-                key={i}
-              >
+              <Form onChange={(e) => this.handleEmpHistoryChange(e, i)} key={i}>
                 <strong>Employer {i + 1}</strong>
                 <Form.Group>
                   <Form.Label>Employer Name</Form.Label>
-                  <Form.Control type="text" data-property="employerName" />
+                  <Form.Control type="text" data-property="employer" />
                 </Form.Group>
                 <Form.Row>
                   <Form.Group as={Col}>
@@ -193,7 +264,8 @@ class EmployeeRegister extends Component {
                     <Form.Check
                       type="checkbox"
                       label="Currently Working Here"
-                      data-property="employed"
+                      data-property="currentlyEmployed"
+                      disabled
                     />
                   </Form.Group>
                 </Form.Row>
@@ -249,7 +321,7 @@ class EmployeeRegister extends Component {
           )}
 
           <hr />
-          <Button type="submit" onSubmit={this.handleSubmit}>
+          <Button type="submit" onClick={this.handleSubmit}>
             Submit
           </Button>
         </Container>
