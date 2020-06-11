@@ -10,31 +10,39 @@ router.post('/', (req,res)=>{
 })
 
 
-//updating a schedule
+// update Schedules
+router.put("schedulesUpdate/:id", (req, res) => {
+    schedules.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
+    .then((dbSchedules) => {
+        res.json(dbSchedules)
+    });
+});
 
-router.put('/schedulesUpdate/:id', (req,res)=> {
-    res.send('Updating schedule' + req.params.id)
 
-})
-// router.put('/schedulesUpdate/:id',({params}) =>{
-//     db.schedules.update(
-//         {
-//             _id: mongojs.ObjectId(params.id)
-//         },
-       
-//         (error,edited) => {
-//             if (error){
-//                 console.log(error);
-//                 res.send(error);
-//             }else {
-//               console.log(edited); 
-//             res.json(edited);
-//          }
-//             }
-//     );
+
+//getting all Schedules
+router.get('/', async (req,res) => {
+    try {
+        const schedules = await Schedules.find()
+        res.json(schedules)
+    } catch (err) {
+        res.status(500).json({message: err.message})
         
-// });
+    }
+    })
 
+    // Deleting one 
+    router.delete('/:id', async (req,res) => {
+        try {
+            const schedules = await Schedules.findByIdAndDelete(req.params.id)
+        res.json({meeasge:"schedule deleted"})
+      //res.send('Hello') 
+      console.log(schedules)
+        } catch (err) {
+            res.status(500).json({message: err.message})
+            
+        }
+        })
 
 
 module.exports = router

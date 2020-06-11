@@ -10,6 +10,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    accessType:{
+        type:String,
+        required: true,
+        default:"admin"
+    }
+    
 });
 
 module.exports = User = mongoose.model("User", UserSchema);
