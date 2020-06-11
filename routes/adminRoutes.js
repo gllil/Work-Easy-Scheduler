@@ -34,15 +34,29 @@ router.post('/', (req,res)=>{
 
 })
 
-//Updating one
-router.patch('/:id',(req, res)=>{
+//Updating admin update
+router.put("adminUpdate/:id", (req, res) => {
+    admin.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
+    .then((dbAdmin) => {
+        res.json(dbAdmin)
+    });
+});
 
-})
 
 //Deleting one 
 
-router.delete('/:id',(req,res)=>{
+router.delete('/:id', async (req,res) => {
+    try {
+        const admin = await Admin.findByIdAndDelete(req.params.id)
+    res.json({meeasge:"admin deleted"})
+  //res.send('Hello') 
+  console.log(admin)
+    } catch (err) {
+        res.status(500).json({message: err.message})
+        
+    }
+    })
 
-})
+
 module.exports = router
 
