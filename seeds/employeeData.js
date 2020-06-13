@@ -13,14 +13,13 @@ const employeeData = [
     lastname: "Jackman",
     dob: "1990-01-20",
     ssn: "7534267598",
-    email: "email@email.com",
+    phone: "8568962354",
+    email: "alan@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -35,7 +34,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -45,14 +43,13 @@ const employeeData = [
     lastname: "Benson",
     dob: "1990-01-20",
     ssn: "7534267598",
-    email: "email@email.com",
+    phone: "8568962354",
+    email: "irma@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -67,7 +64,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -77,14 +73,13 @@ const employeeData = [
     lastname: "Trevor",
     dob: "1990-01-20",
     ssn: "7534267598",
-    email: "email@email.com",
+    phone: "8568962354",
+    email: "dana@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -99,7 +94,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -109,14 +103,13 @@ const employeeData = [
     lastname: "Osborne",
     dob: "1990-01-20",
     ssn: "7534267598",
-    email: "email@email.com",
+    phone: "8568962354",
+    email: "john@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -131,7 +124,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -141,14 +133,13 @@ const employeeData = [
     lastname: "McDonald",
     dob: "1990-01-20",
     ssn: "7534267598",
-    email: "email@email.com",
+    phone: "8568962354",
+    email: "michael@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -163,7 +154,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -173,14 +163,13 @@ const employeeData = [
     lastname: "Davis",
     dob: "1990-01-20",
     ssn: "7534267598",
+    phone: "8568962354",
     email: "parker@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -195,7 +184,6 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
   {
@@ -205,14 +193,13 @@ const employeeData = [
     lastname: "Anderson",
     dob: "1990-01-20",
     ssn: "7534267598",
+    phone: "8568962354",
     email: "janet@email.com",
     address1: "123 Main St",
     address2: "",
     city: "New York",
     state: "NY",
-    zipcode: "11101",
-    password: "",
-    password2: "",
+    zipCode: "11101",
     accessType: "employee",
     employers: [
       {
@@ -227,8 +214,17 @@ const employeeData = [
       },
     ],
     employeeStatus: "recruit",
-    errors: {},
     accessType: "employee",
   },
 ];
-module.exports = employeeData;
+employeeModel
+  .remove({})
+  .then(() => employeeModel.insertMany(employeeData))
+  .then((data) => {
+    console.log(data + " records inserted!");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

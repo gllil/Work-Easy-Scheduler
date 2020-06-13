@@ -1,68 +1,22 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const schedulesSchema = new mongoose.Schema({
-name: {
+  name: {
     type: String,
-    required: true
-},
-monday: {
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-},
-tuesday: {
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-},
-wednesday:{
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-},
-thursday:{
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-},
-friday:{
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-    
-},
-saturday:{
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-},
-sunday:{
-    timeStart:{
-        type: Number
-    },
-    timeStop: {
-        type: Number
-    }
-}
-})
+    required: true,
+  },
+  weekday: {
+    type: String,
+    required: true,
+  },
+  timeStart: {
+    type: String,
+    required: true,
+  },
+  timeStop: {
+    type: String,
+    required: true,
+  },
+});
 
-
-module.exports = mongoose.model('schedules',schedulesSchema)
+module.exports = mongoose.model("schedules", schedulesSchema);
