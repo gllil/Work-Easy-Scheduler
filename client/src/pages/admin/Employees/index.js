@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AdminNav from "../../../components/AdminNav";
 import { Container, Col, Row, Table } from "react-bootstrap";
+import API from "../../../utils/API";
+import Moment from "moment";
 
 function Employees() {
+  const [employees, setEmployees] = useState();
+
+  useEffect(() => {
+    API.getEmployees().then((res) => setEmployees(res.data));
+  }, []);
+
+  console.log(employees);
+
   return (
     <div>
       <AdminNav />
@@ -12,7 +22,7 @@ function Employees() {
             <h3>Employees</h3>
           </Col>
         </Row>
-        <Table>
+        <Table className="text-center">
           <thead>
             <tr>
               <th>Employee</th>
@@ -23,12 +33,19 @@ function Employees() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {employees
+              ? employees.map((emp, i) => (
+                  <tr key={i}>
+                    <td>
+                      {emp.firstname} {emp.lastname}
+                    </td>
+                    <td>{Moment(emp.adminDate).format("MM/DD/YYYY")}</td>
+                    <td>{emp.employeeStatus}</td>
+                    <td>Position</td>
+                    <td>{Moment(emp.dob).format("MM/DD/YYYY")}</td>
+                  </tr>
+                ))
+              : "Loading..."}
           </tbody>
         </Table>
       </Container>

@@ -22,11 +22,11 @@ export default {
   },
 
   getSchedules: () => {
-    return axios.get("/api/schedules");
+    return axios.get("/api/schedules/");
   },
 
   addSchedule: (scheduleInfo) => {
-    return axios.post("/api/schedules", scheduleInfo);
+    return axios.post("/api/schedules/", scheduleInfo);
   },
 
   deleteSchedule: (id) => {
@@ -38,7 +38,7 @@ export default {
   },
 
   addAdmin: (adminInfo) => {
-    return axios.post("/api/admin", adminInfo);
+    return axios.post("/api/admin/", adminInfo);
   },
 
   addCompany: (companyName) => {

@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "npm start --prefix client",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "seed": "node seeds/employeeData.js"
   },
   "repository": {
     "type": "git",
