@@ -10,7 +10,7 @@ const timeoffRoutes = require('./timeoffRoutes')
 const positionRoutes = require('./positionRoutes')
 
 
-router.use('/api/timeoff',positionRoutes)
+router.use('/api/position',positionRoutes)
 router.use('/api/timeoff',timeoffRoutes)
 router.use('/api/trade',tradeRoutes)
 router.use('/api/shifts',shiftsRoutes)
