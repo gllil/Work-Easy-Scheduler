@@ -26,7 +26,6 @@ class EmployeeRegister extends Component {
       zipcode: "",
       password: "",
       password2: "",
-      accessType: "employee",
       employers: [
         {
           employer: "",

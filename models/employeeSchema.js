@@ -100,9 +100,36 @@ const employeeSchema = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
-  //employerContact:{
-  //   type
-  //}
+  schedule: {
+    Sunday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Monday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Tuesday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Wednesday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Thursday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Friday: {
+      timeStart: String,
+      timeStop: String,
+    },
+    Saturday: {
+      timeStart: String,
+      timeStop: String,
+    },
+  },
 });
 
 module.exports = mongoose.model("employee", employeeSchema);

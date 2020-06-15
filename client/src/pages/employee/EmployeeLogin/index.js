@@ -87,7 +87,7 @@ class EmployeeLogin extends Component {
                 placeholder="password"
                 type="password"
                 onChange={this.handleChange}
-                data-property="email"
+                data-property="password"
               />
             </Form.Group>
             <Button type="submit">Submit</Button>

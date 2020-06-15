@@ -14,7 +14,11 @@ export default {
   },
 
   updateEmployee: (id) => {
-    return axios.update("/api/employees/" + id);
+    return axios.put("/api/employees/" + id);
+  },
+
+  updateSchedule: (scheduleInfo, id) => {
+    return axios.put("/api/employees/schedules/" + id, scheduleInfo);
   },
 
   deleteEmployee: (id) => {

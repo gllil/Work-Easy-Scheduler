@@ -4,7 +4,7 @@ import "./schedule.css";
 
 function Week() {
   return (
-    <Table className="center">
+    <Table className="text-center">
       <thead>
         <tr>
           <th colSpan="3">March 20, 2021 - March 27, 2021</th>
