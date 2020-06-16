@@ -95,6 +95,9 @@ const employeeSchema = new mongoose.Schema({
       },
     },
   ],
+  position: {
+    type: String,
+  },
   adminDate: {
     type: Date,
     required: true,

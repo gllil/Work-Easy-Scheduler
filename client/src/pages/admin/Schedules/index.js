@@ -131,7 +131,7 @@ function Schedules() {
 
     console.log(newSchedule);
 
-    API.updateSchedule(newSchedule, key)
+    API.updateEmployeeInfo(newSchedule, key)
       .then(() => {
         setShowEdit(false);
         window.location.reload(false);
@@ -177,7 +177,7 @@ function Schedules() {
 
     console.log(newSchedule);
 
-    API.updateSchedule(newSchedule, key)
+    API.updateEmployeeInfo(newSchedule, key)
       .then(() => {
         setShowEdit(false);
         window.location.reload(false);

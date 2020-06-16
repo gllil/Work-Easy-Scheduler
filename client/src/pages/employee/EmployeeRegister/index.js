@@ -101,11 +101,23 @@ class EmployeeRegister extends Component {
     this.setState({ employers: updatedEmployers });
   };
 
-  // handldeCheckbox() {
-  //   this.state.currentlyEmployed === false
-  //     ? this.setState({ currentlyEmployed: true })
-  //     : this.setState({ currentlyEmployed: false });
-  // }
+  formatPhoneNumber = (number) => {
+    let cleaned = ("" + number).replace(/\D/g, "");
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return "(" + match[1] + ") " + match[2] + "-" + match[3];
+    }
+    return null;
+  };
+
+  formatSocial = (number) => {
+    let cleaned = ("" + number).replace(/\D/g, "");
+    let match = cleaned.match(/^(\d{3})(\d{2})(\d{4})$/);
+    if (match) {
+      return match[1] + "- " + match[2] + "-" + match[3];
+    }
+    return null;
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -123,8 +135,8 @@ class EmployeeRegister extends Component {
       middleinitial: this.state.middlename,
       lastname: this.state.lastname,
       dob: this.state.dob,
-      ssn: this.state.ssn,
-      phone: this.state.phone,
+      ssn: this.formatSocial(this.state.ssn),
+      phone: this.formatPhoneNumber(this.state.phone),
       email: this.state.email,
       address1: this.state.address1,
       address2: this.state.address2,
@@ -133,6 +145,37 @@ class EmployeeRegister extends Component {
       zipCode: this.state.zipcode,
       employeeStatus: this.state.employeeStatus,
       employers: this.state.employers,
+      position: "",
+      schedule: {
+        Sunday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Monday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Tuesday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Wednesday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Thursday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Friday: {
+          timeStart: "",
+          timeStop: "",
+        },
+        Saturday: {
+          timeStart: "",
+          timeStop: "",
+        },
+      },
     };
 
     console.log(newUser);

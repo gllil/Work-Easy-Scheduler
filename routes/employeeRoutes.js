@@ -12,6 +12,16 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+router.get("/:email", async (req, res) => {
+  try {
+    const employee = await Employee.findOne({ email: req.params.email });
+    res.json(employee);
+    //res.send('Hello')
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // delete emplyee
 router.delete("/:id", async (req, res) => {
   try {
@@ -53,7 +63,7 @@ router.get("/", async (req, res) => {
     });
   });
 });
-router.put("/schedules/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   Employee.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true,
