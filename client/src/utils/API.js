@@ -1,40 +1,58 @@
 import axios from "axios";
 
 export default {
-    getEmployees: () => {
-        return axios.get("/api/employees/")
-    },
+  getEmployees: () => {
+    return axios.get("/api/employees/");
+  },
 
-    getAdmin: (id) => {
-        return axios.get("/api/admin/" + id)
-    },
+  getEmployee: (email) => {
+    return axios.get("/api/employees/" + email);
+  },
 
-    updateEmployee: (id) => {
-        return axios.update("/api/employees/" + id)
-    },
+  getAdmin: (id) => {
+    return axios.get("/api/admin/" + id);
+  },
 
-    deleteEmployee: (id) => {
-        return axios.delete("/api/employees/" + id)
-    },
+  getCompanies: () => {
+    return axios.get("/api/company");
+  },
 
-    getSchedules: () => {
-        return axios.get("/api/schedules")
-    },
+  updateEmployee: (id) => {
+    return axios.put("/api/employees/" + id);
+  },
 
-    addSchedule: (scheduleInfo) => {
-        return axios.post("/api/schedules", scheduleInfo)
-    },
+  updateEmployeeInfo: (info, id) => {
+    return axios.put("/api/employees/" + id, info);
+  },
 
-    deleteSchedule: (id) => {
-        return axios.delete("/api/schedules/" + id)
-    },
+  deleteEmployee: (id) => {
+    return axios.delete("/api/employees/" + id);
+  },
 
-    addEmployee: (employeeInfo) => {
-        return axios.post("/api/employees", employeeInfo)
-    },
+  getSchedules: () => {
+    return axios.get("/api/schedules/");
+  },
 
-    addAdmin: (adminInfo) => {
-        return axios.post("/api/admin", adminInfo)
-    }
-    
-}
+  addSchedule: (scheduleInfo) => {
+    return axios.post("/api/schedules/", scheduleInfo);
+  },
+
+  deleteSchedule: (id) => {
+    return axios.delete("/api/schedules/" + id);
+  },
+
+  addEmployee: (employeeInfo) => {
+    return axios.post("/api/employees/", employeeInfo);
+  },
+
+  addAdmin: (adminInfo) => {
+    return axios.post("/api/admin/", adminInfo);
+  },
+
+  addCompany: (companyName) => {
+    return axios.post("/api/admin", companyName);
+  },
+  getUser: () => {
+    return axios.get("/api/user/");
+  },
+};
