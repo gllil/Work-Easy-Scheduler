@@ -12,7 +12,6 @@ class AdminLogin extends Component {
     this.state = {
       email: "",
       password: "",
-      accessType: "admin",
       errors: {},
     };
   }
@@ -40,7 +39,7 @@ class AdminLogin extends Component {
     const userData = {
       email: this.state.email,
       password: this.state.password,
-      accessType: this.state.accessType
+      accessType: this.props.auth.user.accessType,
     };
 
     // console.log(userData);

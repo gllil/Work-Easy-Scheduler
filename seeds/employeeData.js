@@ -12,7 +12,7 @@ const employeeData = [
     middlename: "",
     lastname: "Jackman",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "alan@email.com",
     address1: "123 Main St",
@@ -20,7 +20,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -35,6 +34,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -42,7 +71,7 @@ const employeeData = [
     middlename: "",
     lastname: "Benson",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "irma@email.com",
     address1: "123 Main St",
@@ -50,7 +79,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -65,6 +93,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -72,7 +130,7 @@ const employeeData = [
     middlename: "",
     lastname: "Trevor",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "dana@email.com",
     address1: "123 Main St",
@@ -80,7 +138,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -95,6 +152,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -102,7 +189,7 @@ const employeeData = [
     middlename: "",
     lastname: "Osborne",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "john@email.com",
     address1: "123 Main St",
@@ -110,7 +197,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -125,6 +211,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -132,7 +248,7 @@ const employeeData = [
     middlename: "",
     lastname: "McDonald",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "michael@email.com",
     address1: "123 Main St",
@@ -140,7 +256,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -155,6 +270,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -162,7 +307,7 @@ const employeeData = [
     middlename: "",
     lastname: "Davis",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "parker@email.com",
     address1: "123 Main St",
@@ -170,7 +315,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -185,6 +329,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
   {
     employerName: "Company",
@@ -192,7 +366,7 @@ const employeeData = [
     middlename: "",
     lastname: "Anderson",
     dob: "1990-01-20",
-    ssn: "7534267598",
+    ssn: "753426759",
     phone: "8568962354",
     email: "janet@email.com",
     address1: "123 Main St",
@@ -200,7 +374,6 @@ const employeeData = [
     city: "New York",
     state: "NY",
     zipCode: "11101",
-    accessType: "employee",
     employers: [
       {
         employer: "The Shop",
@@ -215,6 +388,36 @@ const employeeData = [
     ],
     employeeStatus: "recruit",
     accessType: "employee",
+    schedule: {
+      Sunday: {
+        timeStart: "",
+        timeStop: "",
+      },
+      Monday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Tuesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Wednesday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Thursday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Friday: {
+        timeStart: "09:00",
+        timeStop: "17:00",
+      },
+      Saturday: {
+        timeStart: "",
+        timeStop: "",
+      },
+    },
   },
 ];
 employeeModel

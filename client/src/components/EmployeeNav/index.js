@@ -20,12 +20,12 @@ class EmployeeNav extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Nav.Link href="/trade">Trade Schedule</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/timeoff">Request Time Off</Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
               <Nav.Item>
                 <Nav.Link onClick={this.onLogoutClick}>Logout</Nav.Link>
               </Nav.Item>
@@ -39,9 +39,9 @@ class EmployeeNav extends Component {
 
 EmployeeNav.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({ auth: state.auth });
+const mapStateToProps = (state) => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { logoutUser }) (EmployeeNav);
+export default connect(mapStateToProps, { logoutUser })(EmployeeNav);

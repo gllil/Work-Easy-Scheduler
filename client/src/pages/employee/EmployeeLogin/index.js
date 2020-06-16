@@ -12,7 +12,6 @@ class EmployeeLogin extends Component {
     this.state = {
       email: "",
       password: "",
-      accessType: "employee",
       errors: {},
     };
   }
@@ -43,10 +42,8 @@ class EmployeeLogin extends Component {
     const userData = {
       email: this.state.email,
       password: this.state.password,
-      accessType: this.state.accessType,
     };
 
-    // console.log(userData);
     this.props.loginUser(userData);
   };
 
@@ -87,7 +84,7 @@ class EmployeeLogin extends Component {
                 placeholder="password"
                 type="password"
                 onChange={this.handleChange}
-                data-property="email"
+                data-property="password"
               />
             </Form.Group>
             <Button type="submit">Submit</Button>
