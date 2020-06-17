@@ -5,7 +5,7 @@ import API from "../../../utils/API";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../../actions/authActions";
+import { registerAdminUser } from "../../../actions/authActions";
 
 class AdminRegister extends Component {
   constructor() {
@@ -48,13 +48,12 @@ class AdminRegister extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    
-    
+
     const newUser = {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      accessType: this.state.accessType,
+      company: this.state.company,
     };
 
     const storeAdminInfo = {
@@ -70,22 +69,14 @@ class AdminRegister extends Component {
       zipCode: this.state.zipCode,
     };
 
-    const companyName = {
-      nameofCompany: this.state.company
-    }
-
-    console.log(newUser)
+    console.log(newUser);
     console.log(storeAdminInfo);
-    console.log(companyName)
-    
+
     API.addAdmin(storeAdminInfo)
-    .then(() => this.props.registerUser(newUser, this.props.history))
-    .catch(err => console.log(err))
-  }
+      .then(() => this.props.registerAdminUser(newUser, this.props.history))
+      .catch((err) => console.log(err));
+  };
   render() {
-
-    const { errors } = this.state;
-
     return (
       <div>
         <Container fluid>
@@ -99,7 +90,9 @@ class AdminRegister extends Component {
           </Row>
           <Row>
             <Col className="text-center">
-              <p>Already have an account? <Link to="/adminlogin">Login</Link></p>
+              <p>
+                Already have an account? <Link to="/adminlogin">Login</Link>
+              </p>
             </Col>
           </Row>
           <Form>
@@ -236,7 +229,7 @@ class AdminRegister extends Component {
 }
 
 AdminRegister.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+  registerAdminUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -246,6 +239,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { registerUser })(
+export default connect(mapStateToProps, { registerAdminUser })(
   withRouter(AdminRegister)
 );

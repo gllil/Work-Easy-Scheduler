@@ -1,8 +1,9 @@
-const mongoose = require('mongoose')
-
+const mongoose = require("mongoose");
 
 const positionSchema = new mongoose.Schema({
-firstname: ""
-})
+  position: {
+    type: String,
+  },
+});
 
-module.exports = mongoose.model('position',positionSchema)
+module.exports = mongoose.model("position", positionSchema);

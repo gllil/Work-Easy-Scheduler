@@ -4,7 +4,7 @@ import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../../actions/authActions";
+import { loginAdminUser } from "../../../actions/authActions";
 
 class AdminLogin extends Component {
   constructor() {
@@ -39,16 +39,14 @@ class AdminLogin extends Component {
     const userData = {
       email: this.state.email,
       password: this.state.password,
-      accessType: this.props.auth.user.accessType,
+      company: this.props.auth.user.company,
     };
 
     // console.log(userData);
-    this.props.loginUser(userData);
+    this.props.loginAdminUser(userData);
   };
 
   render() {
-    const { errors } = this.state;
-
     return (
       <div>
         <Container fluid>
@@ -95,7 +93,7 @@ class AdminLogin extends Component {
 }
 
 AdminLogin.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  loginAdminUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -105,4 +103,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(AdminLogin);
+export default connect(mapStateToProps, { loginAdminUser })(AdminLogin);

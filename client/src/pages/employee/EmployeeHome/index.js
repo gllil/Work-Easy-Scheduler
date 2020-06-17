@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EmployeeNav from "../../../components/EmployeeNav";
-import { Container, Button, Row, Col, Form, Table } from "react-bootstrap";
+import { Container, Row, Col, Form, Table } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import API from "../../../utils/API";
@@ -11,10 +11,6 @@ function EmployeeHome(props) {
   const [employee, setEmployee] = useState();
   const [date, setDate] = useState({
     selectDate: currentDate,
-  });
-  const [time, setTime] = useState({
-    startTime: "",
-    endTime: "",
   });
 
   console.log(date.selectDate);
@@ -38,7 +34,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Sunday.timeStop : null}
           </div>
         );
-        break;
       case "Monday":
         return (
           <div>
@@ -46,7 +41,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Monday.timeStop : null}
           </div>
         );
-        break;
       case "Tuesday":
         return (
           <div>
@@ -54,7 +48,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Tuesday.timeStop : null}
           </div>
         );
-        break;
       case "Wednesday":
         return (
           <div>
@@ -62,7 +55,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Wednesday.timeStop : null}
           </div>
         );
-        break;
       case "Thursday":
         return (
           <div>
@@ -70,7 +62,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Thursday.timeStop : null}
           </div>
         );
-        break;
       case "Friday":
         return (
           <div>
@@ -78,7 +69,6 @@ function EmployeeHome(props) {
             {employee ? employee.schedule.Friday.timeStop : null}
           </div>
         );
-        break;
       case "Saturday":
         return (
           <div>

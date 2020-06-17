@@ -11,8 +11,6 @@ class EmployeeNav extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
-
     return (
       <Container fluid>
         <Navbar collapseOnSelect bg="light" variant="light" expand="md">

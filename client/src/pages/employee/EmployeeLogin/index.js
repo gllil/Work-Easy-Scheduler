@@ -48,8 +48,6 @@ class EmployeeLogin extends Component {
   };
 
   render() {
-    const { errors } = this.state;
-
     return (
       <div>
         <Container fluid>

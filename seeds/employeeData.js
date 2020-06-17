@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const employeeModel = require("../models/employeeSchema");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/Workeasy"
+  process.env.MONGODB_URI || "mongodb://localhost:27017/Workeasydb"
 );
 
 const employeeData = [
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Alan",
     middlename: "",
     lastname: "Jackman",
@@ -64,9 +64,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Irma",
     middlename: "",
     lastname: "Benson",
@@ -123,9 +124,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Dana",
     middlename: "",
     lastname: "Trevor",
@@ -182,9 +184,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "John",
     middlename: "",
     lastname: "Osborne",
@@ -241,9 +244,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Michael",
     middlename: "",
     lastname: "McDonald",
@@ -300,9 +304,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Parker",
     middlename: "",
     lastname: "Davis",
@@ -359,9 +364,10 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
   {
-    employerName: "Company",
+    employerName: "Star",
     firstname: "Janet",
     middlename: "",
     lastname: "Anderson",
@@ -418,6 +424,7 @@ const employeeData = [
         timeStop: "",
       },
     },
+    postion: "",
   },
 ];
 employeeModel

@@ -10,8 +10,6 @@ class AdminNav extends Component {
     this.props.logoutUser();
   };
   render() {
-    const { user } = this.props.auth;
-
     return (
       <Container fluid>
         <Navbar collapseOnSelect bg="light" variant="light" expand="md">
@@ -41,9 +39,9 @@ class AdminNav extends Component {
 
 AdminNav.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({ auth: state.auth });
+const mapStateToProps = (state) => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { logoutUser }) (AdminNav);
+export default connect(mapStateToProps, { logoutUser })(AdminNav);

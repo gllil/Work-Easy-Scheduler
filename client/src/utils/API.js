@@ -5,6 +5,10 @@ export default {
     return axios.get("/api/employees/");
   },
 
+  getPositions: () => {
+    return axios.get("/api/position/");
+  },
+
   getEmployee: (email) => {
     return axios.get("/api/employees/" + email);
   },
@@ -14,7 +18,7 @@ export default {
   },
 
   getCompanies: () => {
-    return axios.get("/api/company");
+    return axios.get("/api/companies/");
   },
 
   updateEmployee: (id) => {
@@ -27,6 +31,10 @@ export default {
 
   deleteEmployee: (id) => {
     return axios.delete("/api/employees/" + id);
+  },
+
+  deletePosition: (id) => {
+    return axios.delete("/api/position/" + id);
   },
 
   getSchedules: () => {
@@ -45,13 +53,18 @@ export default {
     return axios.post("/api/employees/", employeeInfo);
   },
 
+  addPosition: (positionInfo) => {
+    return axios.post("/api/position/", positionInfo);
+  },
+
   addAdmin: (adminInfo) => {
     return axios.post("/api/admin/", adminInfo);
   },
 
   addCompany: (companyName) => {
-    return axios.post("/api/admin", companyName);
+    return axios.post("/api/companies/", companyName);
   },
+
   getUser: () => {
     return axios.get("/api/user/");
   },
