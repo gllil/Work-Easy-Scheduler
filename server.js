@@ -9,6 +9,7 @@ const path = require("path");
 
 //const admin = require('./routes/adminRoutes');
 const users = require("./routes/api/user");
+const adminUsers = require("./routes/api/userAdmin");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,6 +17,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/users", users);
+app.use("/api/adminusers", adminUsers);
 
 const db = process.env.MONGODB_URI || require("./config/keys").mongoURI;
 mongoose
