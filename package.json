@@ -38,7 +38,8 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "if-env": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
