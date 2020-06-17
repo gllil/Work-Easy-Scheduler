@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
 import API from "../../../utils/API";
 
-class EmployeeRegister extends Component {
+class EmployeeProfile extends Component {
   constructor() {
     super();
     this.state = {
-      employerName: "Star",
+      employerName: "Company",
       firstname: "",
       middlename: "",
       lastname: "",
@@ -42,46 +42,6 @@ class EmployeeRegister extends Component {
       accessType: "employee",
     };
   }
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated)
-      this.props.history.push("/employeehome");
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated)
-      this.props.history.push("/employeehome");
-
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors,
-      });
-    }
-  }
-
-  addMoreEmployers = () => {
-    this.setState({
-      employers: [
-        ...this.state.employers,
-        {
-          employer: "",
-          jobDescription: "",
-          startDate: "",
-          endDate: "",
-          mgrName: "",
-          mgrPhone: "",
-          leaveReason: "",
-          currentlyEmployed: false,
-        },
-      ],
-    });
-  };
-
-  removeEmployers = (index) => {
-    const form = [...this.state.employers];
-    form.splice(index, 1);
-    this.setState({ employers: form });
-  };
 
   handlePersonalInfoChange = (e) => {
     this.setState({ [e.target.dataset.property]: e.target.value });
@@ -186,6 +146,8 @@ class EmployeeRegister extends Component {
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <PreEmpNav />
@@ -282,83 +244,6 @@ class EmployeeRegister extends Component {
               </Form.Group>
             </Form.Row>
           </Form>
-          <h5>Employment History</h5>
-          <hr />
-          {this.state.employers.map((empInfo, i) => {
-            return (
-              <Form onChange={(e) => this.handleEmpHistoryChange(e, i)} key={i}>
-                <strong>Employer {i + 1}</strong>
-                <Form.Group>
-                  <Form.Label>Employer Name</Form.Label>
-                  <Form.Control type="text" data-property="employer" />
-                </Form.Group>
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Start Date</Form.Label>
-                    <Form.Control type="date" data-property="startDate" />
-                  </Form.Group>
-                  <Form.Group as={Col}>
-                    <Form.Label>End Date</Form.Label>
-                    <Form.Control type="date" data-property="endDate" />
-                    <Form.Check
-                      type="checkbox"
-                      label="Currently Working Here"
-                      data-property="currentlyEmployed"
-                      disabled
-                    />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Group>
-                  <Form.Label>Job Description</Form.Label>
-                  <Form.Control as="textarea" data-property="jobDescription" />
-                </Form.Group>
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Form.Label>Manager/Supervisor Name</Form.Label>
-                    <Form.Control type="text" data-property="mgrName" />
-                  </Form.Group>
-                  <Form.Group as={Col}>
-                    <Form.Label>Manager/Supervisor Phone Number</Form.Label>
-                    <Form.Control type="text" data-property="mgrPhone" />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Group>
-                  <Form.Label>Reason for Leaving</Form.Label>
-                  <Form.Control as="textarea" data-property="leaveReason" />
-                </Form.Group>
-              </Form>
-            );
-          })}
-
-          {this.state.employers.length < 1 ? (
-            <Row>
-              <Button
-                as={Col}
-                md={{ span: 4, offset: 4 }}
-                onClick={this.addMoreEmployers}
-              >
-                Add Employer
-              </Button>
-            </Row>
-          ) : (
-            <Row>
-              <Button
-                as={Col}
-                md={{ span: 3, offset: 1 }}
-                onClick={this.addMoreEmployers}
-              >
-                Add Employer
-              </Button>
-              <Button
-                as={Col}
-                md={{ span: 3, offset: 4 }}
-                onClick={this.removeEmployers}
-              >
-                Remove Employer
-              </Button>
-            </Row>
-          )}
-
           <hr />
           <Button type="submit" onClick={this.handleSubmit}>
             Submit
@@ -369,7 +254,7 @@ class EmployeeRegister extends Component {
   }
 }
 
-EmployeeRegister.propTypes = {
+EmployeeProfile.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
@@ -381,5 +266,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { registerUser })(
-  withRouter(EmployeeRegister)
+  withRouter(EmployeeProfile)
 );

@@ -18,6 +18,8 @@ function Employees() {
   const [employees, setEmployees] = useState();
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
+  // const [positions, setPositions] = useState({});
+  // const [positionDB, setPositionDB] = useState();
   const [id, setId] = useState();
   const [editForm, setEditForm] = useState({});
   const oneEmployee = employees
@@ -25,9 +27,11 @@ function Employees() {
     : "Loading...";
 
   console.log(oneEmployee[0]);
+  console.log(employees);
 
   useEffect(() => {
     API.getEmployees().then((res) => setEmployees(res.data));
+    // API.getPositions().then((res) => setPositionDB(res.data));
   }, []);
 
   function handleOpen(e, iden) {
@@ -40,6 +44,29 @@ function Employees() {
     setShow(false);
     setEdit(false);
   }
+
+  // function handlePositionChange(e) {
+  //   const { dataset, value } = e.target;
+
+  //   setPositions({ ...positions, [dataset.property]: value });
+  // }
+
+  // function handleAddPosition(e) {
+  //   e.preventDefault();
+
+  //   const newPosition = positions;
+
+  //   API.addPosition(newPosition)
+  //     .then(() => window.location.reload(false))
+  //     .catch((err) => console.log(err));
+  // }
+
+  // function handlePositionDelete(e, id) {
+  //   e.preventDefault();
+
+  //   API.deletePosition(id).catch((err) => console.log(err));
+  // }
+
   function formatPhoneNumber(number) {
     let cleaned = ("" + number).replace(/\D/g, "");
     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -329,6 +356,46 @@ function Employees() {
             )}
           </Modal.Footer>
         </Modal>
+        {/* <Row className="text-center">
+          <Col md={6}>
+            <Form>
+              <Form.Group>
+                <Form.Label>Add New Position</Form.Label>
+                <Form.Control
+                  data-property="position"
+                  onChange={(e) => handlePositionChange(e)}
+                />
+              </Form.Group>
+              <Button onClick={(e) => handleAddPosition(e)}>
+                Add Position
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        <Row className="text-center">
+          <Col md={6}>
+            <ListGroup>
+              {positionDB.position ? (
+                [positionDB].map((res, i) => {
+                  return (
+                    <ListGroup.Item>
+                      {res[i].position}
+                      <div className="text-right">
+                        <Link
+                          onClick={(e) => handlePositionDelete(e, res[i]._id)}
+                        >
+                          x
+                        </Link>
+                      </div>
+                    </ListGroup.Item>
+                  );
+                })
+              ) : (
+                <ListGroup.Item>Positions have not been set up</ListGroup.Item>
+              )}
+            </ListGroup>
+          </Col>
+        </Row> */}
       </Container>
     </div>
   );

@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import AdminNav from "../../../components/AdminNav";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Container, Row, Col, Table } from "react-bootstrap";
 import API from "../../../utils/API";
 
-function AdminHome() {
+function AdminHome(props) {
   const [schedules, setSchedules] = useState();
 
   console.log(schedules);
   useEffect(() => {
     API.getEmployees().then((res) => setSchedules(res.data));
   }, []);
+
+  const userCompany = props.auth.user.company;
+
+  console.log(userCompany);
+
+  const filteredSchedules = schedules
+    ? schedules.filter((res) => res.employeeName === userCompany)
+    : null;
 
   return (
     <div>
@@ -34,8 +44,8 @@ function AdminHome() {
             </tr>
           </thead>
           <tbody>
-            {schedules
-              ? schedules.map((res) => {
+            {filteredSchedules
+              ? filteredSchedules.map((res) => {
                   console.log(res);
                   const name = `${res.firstname} ${res.lastname}`;
                   return (
@@ -96,4 +106,10 @@ function AdminHome() {
   );
 }
 
-export default AdminHome;
+AdminHome.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({ auth: state.auth });
+
+export default connect(mapStateToProps, {})(AdminHome);

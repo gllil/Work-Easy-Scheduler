@@ -219,7 +219,6 @@ function Schedules() {
                   data-property="sundayStop"
                   type="time"
                   defaultValue={res.schedule.Sunday.timeStop}
-                  defaultValue={res.schedule.Sunday.timeStop}
                   onLoadCapture={(e) => handleModalForm(e)}
                 />
               </Form.Group>
