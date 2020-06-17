@@ -44,3 +44,19 @@ export const logoutUser = () => dispatch => {
     setAuthToken(false);
     dispatch(setCurrentUser({}));
 };
+
+export const registerAdminUser = (userData, history) => dispatch => {
+    axios.post('/api/adminusers/register', userData).then(res => history.push("/")).catch(err => dispatch(setErrors(err)));
+};
+
+export const loginAdminUser = userData => dispatch => {
+    axios.post('/api/adminusers/login', userData).then(res => {
+        const { token } = res.data;
+        
+        localStorage.setItem("jwtToken", token);
+        setAuthToken(token);
+
+        const decoded = jwt_decode(token);
+        dispatch(setCurrentUser(decoded));
+    }).catch(err => dispatch(setErrors(err)));
+};

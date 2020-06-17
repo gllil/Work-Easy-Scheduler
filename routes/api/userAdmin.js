@@ -7,7 +7,7 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-const User = require("../../models/userSchema");
+const User = require("../../models/userAdminShema");
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
 
   const email = req.body.email;
   const password = req.body.password;
-  const accessType = req.body.accessType;
+  const company = req.body.company;
 
   User.findOne({ email }).then((user) => {
     if (user) return res.status(400).json({ email: "Email already exists" });
@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
     const newUser = new User({
       email,
       password,
-      accessType,
+      company,
     });
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -48,6 +48,7 @@ router.post("/login", (req, res) => {
 
   const email = req.body.email;
   const password = req.body.password;
+  const company = req.body.company; 
 
   User.findOne({ email }).then((user) => {
     if (!user)
@@ -62,7 +63,7 @@ router.post("/login", (req, res) => {
       const payload = {
         id: user.id,
         email: user.email,
-        accessType: user.accessType,
+        company: user.company,
       };
 
       jwt.sign(payload, keys.cypher, { expiresIn: 31556926 }, (err, token) => {
