@@ -16,13 +16,61 @@ import {
 function Hiring() {
   const [show, setShow] = useState(false);
   const [employees, setEmployees] = useState();
+  const [positions, setPositions] = useState();
+  const [form, setForm] = useState({
+    employeeStatus: "",
+    position: "",
+  });
+  const [id, setId] = useState();
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   useEffect(() => {
     API.getEmployees().then((res) => setEmployees(res.data));
+    API.getPositions().then((res) => setPositions(res.data));
   }, []);
+
+  function formatPhoneNumber(number) {
+    let cleaned = ("" + number).replace(/\D/g, "");
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return "(" + match[1] + ") " + match[2] + "-" + match[3];
+    }
+    return null;
+  }
+
+  function handleReview(e) {
+    e.preventDefault();
+    setShow(true);
+  }
+  console.log(id);
+
+  function handleModalChange(e) {
+    const { dataset, value } = e.target;
+    console.log(dataset, value);
+
+    setForm({ ...form, [dataset.property]: value });
+  }
+
+  function handleSave(e) {
+    e.preventDefault();
+
+    const newInfo = {
+      employeeStatus: form.employeeStatus,
+      position: form.position,
+    };
+    const key = id;
+    console.log(newInfo);
+
+    API.updateEmployeeInfo(newInfo, key)
+      .then((res) => {
+        console.log(res);
+        console.log(key);
+        setShow(false);
+        // window.location.reload(false);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div>
@@ -36,7 +84,7 @@ function Hiring() {
         {employees
           ? employees.map((res) => {
               return (
-                <Accordion>
+                <Accordion key={res._id}>
                   <Card>
                     <Card.Header>
                       <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -47,73 +95,107 @@ function Hiring() {
                       <Card.Body>
                         {res.employers.map((result) => {
                           return (
-                            <div>
+                            <div key={result._id}>
                               <Row>
-                                <Col>Employer: {result.employer}</Col>
-                              </Row>
-                              <Row>
-                                <Col>Description {result.jobDescription}</Col>
+                                <Col>
+                                  <strong>Employer: </strong>
+                                  {result.employer}
+                                </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  Start Date:
+                                  <strong>Description: </strong>
+                                  {result.jobDescription}
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <strong>Start Date: </strong>
                                   {Moment(result.startDate).format(
                                     "MM/DD/YYYY"
                                   )}
                                 </Col>
                                 <Col>
-                                  End Date:
+                                  <strong>End Date: </strong>
                                   {Moment(result.endDate).format("MM/DD/YYYY")}
                                 </Col>
                               </Row>
                               <Row>
-                                <Col>Manager: {result.mgrName}</Col>
-                                <Col>Manager Phone: {result.mgrPhone}</Col>
-                              </Row>
-                              <Row>
                                 <Col>
-                                  Reason for Leaving: {result.leaveReason}
+                                  <strong>Manager: </strong> {result.mgrName}
+                                </Col>
+                                <Col>
+                                  <strong>Manager Phone: </strong>{" "}
+                                  {formatPhoneNumber(result.mgrPhone)}
                                 </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  Currently Employed:{" "}
-                                  {result.leaveReason ? "Yes" : "No"}
+                                  <strong>Reason for Leaving: </strong>{" "}
+                                  {result.leaveReason}
                                 </Col>
                               </Row>
+                              <Row>
+                                <Col>
+                                  <strong>Currently Employed: </strong>
+                                  {result.currentlyEmployed ? "Yes" : "No"}
+                                </Col>
+                              </Row>
+                              <Button
+                                variant="primary"
+                                onClick={(e) => {
+                                  handleReview(e);
+                                  setId(result._id);
+                                }}
+                              >
+                                Review
+                              </Button>
                             </div>
                           );
                         })}
-                        <Button variant="primary" onClick={handleShow}>
-                          Review
-                        </Button>
+
                         <Modal show={show} onHide={handleClose}>
                           <Modal.Header closeButton>
                             <Modal.Title>Resume Review</Modal.Title>
                           </Modal.Header>
                           <Modal.Body>
-                            <Form>
+                            <Form onChange={(e) => handleModalChange(e)}>
                               <Row>
                                 <Col>
                                   <Form.Group controlId="exampleForm.ControlSelect2">
                                     <Form.Label>
                                       Change Employment Status
                                     </Form.Label>
-                                    <Form.Control as="select" multiple>
-                                      <option>Active</option>
-                                      <option>Archive</option>
+                                    <Form.Control
+                                      data-property="employeeStatus"
+                                      as="select"
+                                      multiple
+                                    >
+                                      <option>recruit</option>
+                                      <option>employed</option>
+                                      <option>resigned</option>
                                     </Form.Control>
                                   </Form.Group>
                                 </Col>
                                 <Col>
                                   <Form.Group controlId="exampleForm.ControlSelect2">
-                                    <Form.Label>Position</Form.Label>
-                                    <Form.Control as="select" multiple>
-                                      <option>No Position</option>
-                                      <option>Customer Service</option>
-                                      <option>Engineer</option>
-                                      <option>Manager</option>
-                                      <option>Supervisor</option>
+                                    <Form.Label>Position/Role</Form.Label>
+                                    <Form.Control
+                                      data-property="position"
+                                      as="select"
+                                      multiple
+                                    >
+                                      {positions ? (
+                                        positions.map((res) => {
+                                          return (
+                                            <option key={res._id}>
+                                              {res.position}
+                                            </option>
+                                          );
+                                        })
+                                      ) : (
+                                        <option>No Positions Added</option>
+                                      )}
                                     </Form.Control>
                                   </Form.Group>
                                 </Col>
@@ -124,7 +206,10 @@ function Hiring() {
                             <Button variant="secondary" onClick={handleClose}>
                               Close
                             </Button>
-                            <Button variant="primary" onClick={handleClose}>
+                            <Button
+                              variant="primary"
+                              onClick={(e) => handleSave(e)}
+                            >
                               Save Changes
                             </Button>
                           </Modal.Footer>

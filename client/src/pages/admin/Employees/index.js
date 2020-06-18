@@ -18,8 +18,8 @@ function Employees() {
   const [employees, setEmployees] = useState();
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
-  // const [positions, setPositions] = useState({});
-  // const [positionDB, setPositionDB] = useState();
+  const [positions, setPositions] = useState({});
+  const [positionDB, setPositionDB] = useState();
   const [id, setId] = useState();
   const [editForm, setEditForm] = useState({});
   const oneEmployee = employees
@@ -28,10 +28,11 @@ function Employees() {
 
   console.log(oneEmployee[0]);
   console.log(employees);
+  console.log(positionDB);
 
   useEffect(() => {
     API.getEmployees().then((res) => setEmployees(res.data));
-    // API.getPositions().then((res) => setPositionDB(res.data));
+    API.getPositions().then((res) => setPositionDB(res.data));
   }, []);
 
   function handleOpen(e, iden) {
@@ -45,27 +46,29 @@ function Employees() {
     setEdit(false);
   }
 
-  // function handlePositionChange(e) {
-  //   const { dataset, value } = e.target;
+  function handlePositionChange(e) {
+    const { dataset, value } = e.target;
 
-  //   setPositions({ ...positions, [dataset.property]: value });
-  // }
+    setPositions({ ...positions, [dataset.property]: value });
+  }
 
-  // function handleAddPosition(e) {
-  //   e.preventDefault();
+  function handleAddPosition(e) {
+    e.preventDefault();
 
-  //   const newPosition = positions;
+    const newPosition = positions;
 
-  //   API.addPosition(newPosition)
-  //     .then(() => window.location.reload(false))
-  //     .catch((err) => console.log(err));
-  // }
+    API.addPosition(newPosition)
+      .then(() => window.location.reload(false))
+      .catch((err) => console.log(err));
+  }
 
-  // function handlePositionDelete(e, id) {
-  //   e.preventDefault();
+  function handlePositionDelete(e, id) {
+    e.preventDefault();
 
-  //   API.deletePosition(id).catch((err) => console.log(err));
-  // }
+    API.deletePosition(id)
+      .then(() => window.location.reload(false))
+      .catch((err) => console.log(err));
+  }
 
   function formatPhoneNumber(number) {
     let cleaned = ("" + number).replace(/\D/g, "");
@@ -102,6 +105,8 @@ function Employees() {
       })
       .catch((err) => console.log(err));
   }
+
+  console.log(employees);
 
   function handleFormChange(e) {
     const { dataset, value } = e.target;
@@ -315,6 +320,13 @@ function Employees() {
             <h3>Employees</h3>
           </Col>
         </Row>
+        <Row>
+          <Col className="text-center">
+            <p>
+              <em>Click on Employee Name to View/Edit</em>
+            </p>
+          </Col>
+        </Row>
         <Table className="text-center">
           <thead>
             <tr>
@@ -336,7 +348,7 @@ function Employees() {
                     </td>
                     <td>{Moment(emp.adminDate).format("MM/DD/YYYY")}</td>
                     <td>{emp.employeeStatus}</td>
-                    <td>Position</td>
+                    <td>{emp.position}</td>
                     <td>{Moment(emp.dob).format("MM/DD/YYYY")}</td>
                   </tr>
                 ))
@@ -356,13 +368,28 @@ function Employees() {
             )}
           </Modal.Footer>
         </Modal>
-        {/* <Row className="text-center">
+        <Row>
+          <Col className="text-center">
+            <h3>Positions/Roles</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center">
+            <p>
+              <em>Add and Remove Roles in your company</em>
+            </p>
+          </Col>
+        </Row>
+        <Row className="text-center">
           <Col md={6}>
             <Form>
               <Form.Group>
-                <Form.Label>Add New Position</Form.Label>
+                <Form.Label>
+                  <strong>Add New Position</strong>
+                </Form.Label>
                 <Form.Control
                   data-property="position"
+                  placeholder="Position Name"
                   onChange={(e) => handlePositionChange(e)}
                 />
               </Form.Group>
@@ -375,14 +402,16 @@ function Employees() {
         <Row className="text-center">
           <Col md={6}>
             <ListGroup>
-              {positionDB.position ? (
-                [positionDB].map((res, i) => {
+              {positionDB ? (
+                positionDB.map((res, i) => {
+                  console.log(res._id);
                   return (
-                    <ListGroup.Item>
-                      {res[i].position}
+                    <ListGroup.Item key={i}>
+                      {res.position}
                       <div className="text-right">
                         <Link
-                          onClick={(e) => handlePositionDelete(e, res[i]._id)}
+                          className="text-danger"
+                          onClick={(e) => handlePositionDelete(e, res._id)}
                         >
                           x
                         </Link>
@@ -391,11 +420,11 @@ function Employees() {
                   );
                 })
               ) : (
-                <ListGroup.Item>Positions have not been set up</ListGroup.Item>
+                <ListGroup.Item>Positions have not been added</ListGroup.Item>
               )}
             </ListGroup>
           </Col>
-        </Row> */}
+        </Row>
       </Container>
     </div>
   );
