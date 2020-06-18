@@ -18,6 +18,7 @@ class EmployeeRegister extends Component {
       dob: "",
       ssn: "",
       email: "",
+      phone: "",
       address1: "",
       address2: "",
       city: "",
@@ -125,7 +126,6 @@ class EmployeeRegister extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      accessType: this.state.accessType,
     };
 
     const applicationInfo = {

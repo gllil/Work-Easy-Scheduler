@@ -64,7 +64,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -124,7 +124,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -184,7 +184,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -244,7 +244,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -304,7 +304,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -364,7 +364,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
   {
     employerName: "Star",
@@ -424,7 +424,7 @@ const employeeData = [
         timeStop: "",
       },
     },
-    postion: "",
+    position: "",
   },
 ];
 employeeModel

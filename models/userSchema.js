@@ -10,10 +10,6 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  company: {
-    type:String,
-    required:true
-}
 });
 
 module.exports = User = mongoose.model("User", UserSchema);

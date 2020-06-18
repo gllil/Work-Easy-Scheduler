@@ -18,7 +18,7 @@ function AdminHome(props) {
   console.log(userCompany);
 
   const filteredSchedules = schedules
-    ? schedules.filter((res) => res.employeeName === userCompany)
+    ? schedules.filter((res) => res.employerName === userCompany)
     : null;
 
   return (
